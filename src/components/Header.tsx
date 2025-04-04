@@ -31,13 +31,9 @@ export const Header = ({ logo }: HeaderProps) => {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <a href="#" className="flex items-center space-x-2">
-            {logo ? (
-              <div className="h-12 w-12 overflow-hidden rounded-full border border-decoroots-brown">
-                <img src="/lovable-uploads/de8ec7d7-4da2-4fb0-9051-d619c1364a4b.png" alt="Decoroots Logo" className="h-full w-full object-cover" />
-              </div>
-            ) : (
-              <div className="h-8 w-8 bg-primary rounded-full"></div>
-            )}
+            <div className="h-12 w-12 overflow-hidden rounded-full border border-decoroots-brown">
+              <img src={logo} alt="Decoroots Logo" className="h-full w-full object-cover" />
+            </div>
             <span className="text-xl md:text-2xl font-serif">Decoroots</span>
           </a>
           

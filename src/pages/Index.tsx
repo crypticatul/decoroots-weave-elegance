@@ -1,12 +1,42 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { useEffect } from "react";
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+import Portfolio from "@/components/Portfolio";
+import Story from "@/components/Story";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
+import { setupRevealAnimations } from "@/lib/animation";
 
 const Index = () => {
+  useEffect(() => {
+    // Setup intersection observer for animations
+    const observer = setupRevealAnimations();
+    
+    // Register the service worker for PWA
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(err => {
+          console.error('Service worker registration failed:', err);
+        });
+      });
+    }
+    
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="flex flex-col min-h-screen">
+      <Header />
+      <main className="flex-grow">
+        <Hero />
+        <Portfolio />
+        <Story />
+        <Contact />
+      </main>
+      <Footer />
     </div>
   );
 };

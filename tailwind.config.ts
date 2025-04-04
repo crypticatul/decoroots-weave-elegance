@@ -110,6 +110,9 @@ export default {
         'serif': ['Playfair Display', 'serif'],
         'sans': ['Inter', 'sans-serif'],
       },
+      scale: {
+        '30': '0.3',
+      }
 		}
 	},
 	plugins: [require("tailwindcss-animate")],

@@ -68,7 +68,7 @@ export const Footer = () => {
             © {currentYear} Decoroots. All rights reserved.
           </p>
           <p className="text-sm text-muted-foreground flex items-center mt-4 sm:mt-0">
-            Crafted with <Heart className="h-3 w-3 text-decoroots-terracotta mx-1" /> for artisanal luxury
+            Crafted with <Heart className="h-3 w-3 text-decoroots-terracotta mx-1" /> by  <a href="https://cognitiev.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors underline underline-offset-2"> 🧠Cognitiev.com</a>
           </p>
         </div>
       </div>

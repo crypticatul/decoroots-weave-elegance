@@ -16,11 +16,11 @@ export const Story = () => {
         <div className="grid md:grid-cols-5 gap-8 mt-12">
           <div className="md:col-span-2">
             <div className="h-full w-full rounded-2xl overflow-hidden shadow-md reveal-animation" data-animation="weave-left">
-              <div className="h-full w-full aspect-[3/4] bg-decoroots-cream dark:bg-decoroots-charcoal/40 flex items-center justify-center">
-                <p className="text-muted-foreground p-4 text-center">
-                  Artisan Image Placeholder
-                </p>
-              </div>
+              <img 
+                src="/placeholder.svg" 
+                alt="Artisan crafting macrame"
+                className="w-full h-full object-cover object-center aspect-[3/4]" 
+              />
             </div>
           </div>
           

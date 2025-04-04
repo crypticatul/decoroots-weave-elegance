@@ -1,38 +1,19 @@
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Mail, Phone, Globe } from "lucide-react";
 import { setupRevealAnimations } from "@/lib/animation";
 import { Button } from "@/components/ui/button";
-import { useToast } from "@/components/ui/use-toast";
+// Removed useState and useToast as Netlify handles submission state
 
 export const Contact = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
+  // Removed state variables (name, email, message, isSubmitting)
   
   useEffect(() => {
     const observer = setupRevealAnimations();
     return () => observer.disconnect();
   }, []);
   
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      toast({
-        title: "Message Sent",
-        description: "Thanks for reaching out. We'll get back to you soon!",
-      });
-      setName("");
-      setEmail("");
-      setMessage("");
-      setIsSubmitting(false);
-    }, 1000);
-  };
+  // Removed handleSubmit function as Netlify handles submission
   
   return (
     <section id="contact" className="section-container">
@@ -88,14 +69,17 @@ export const Contact = () => {
           </div>
           
           <div className="reveal-animation" data-animation="weave-right">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Added data-netlify, name, method attributes. Removed onSubmit */}
+            <form name="contact" method="POST" data-netlify="true" className="space-y-6">
+              {/* Added hidden input for Netlify */}
+              <input type="hidden" name="form-name" value="contact" />
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">Name</label>
                 <input
                   id="name"
+                  name="name" // Added name attribute
                   type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  // Removed value and onChange for uncontrolled component with Netlify
                   required
                   className="w-full px-4 py-2 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                   placeholder="Your name"
@@ -106,9 +90,9 @@ export const Contact = () => {
                 <label htmlFor="email" className="block text-sm font-medium mb-2">Email</label>
                 <input
                   id="email"
+                  name="email" // Added name attribute
                   type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  // Removed value and onChange
                   required
                   className="w-full px-4 py-2 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                   placeholder="your.email@example.com"
@@ -119,8 +103,8 @@ export const Contact = () => {
                 <label htmlFor="message" className="block text-sm font-medium mb-2">Message</label>
                 <textarea
                   id="message"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
+                  name="message" // Added name attribute
+                  // Removed value and onChange
                   required
                   rows={5}
                   className="w-full px-4 py-2 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
@@ -128,8 +112,9 @@ export const Contact = () => {
                 />
               </div>
               
-              <Button type="submit" className="w-full" disabled={isSubmitting}>
-                {isSubmitting ? "Sending..." : "Send Message"}
+              {/* Removed disabled state and dynamic text */}
+              <Button type="submit" className="w-full">
+                Send Message
               </Button>
             </form>
           </div>

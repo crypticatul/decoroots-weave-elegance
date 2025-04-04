@@ -1,4 +1,5 @@
 
+// Built & updated by AI from Cognitiev.com
 import { useEffect } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -29,7 +30,7 @@ const Index = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header logo="/lovable-uploads/c04c2297-b92e-46b9-bbd0-8056a8104ef9.png" />
+      <Header logo="/logo.png" />
       <main className="flex-grow">
         <Hero />
         <Portfolio />

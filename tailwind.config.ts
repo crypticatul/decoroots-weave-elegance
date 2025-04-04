@@ -98,13 +98,13 @@ export default {
         }
 			},
 			animation: {
-				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out',
-        'fade-in': 'fade-in 0.6s ease-out forwards',
-        'fade-out': 'fade-out 0.6s ease-out forwards',
-        'scale-in': 'scale-in 0.6s ease-out forwards',
-        'weave-left': 'weave-left 0.8s ease-out forwards',
-        'weave-right': 'weave-right 0.8s ease-out forwards'
+				'accordion-down': 'accordion-down 0.2s ease-out', // Keep accordion as is
+				'accordion-up': 'accordion-up 0.2s ease-out',   // Keep accordion as is
+        'fade-in': 'fade-in 0.8s ease-in-out forwards',     // Smoother fade
+        'fade-out': 'fade-out 0.8s ease-in-out forwards',    // Smoother fade
+        'scale-in': 'scale-in 0.8s ease-in-out forwards',   // Smoother scale
+        'weave-left': 'weave-left 1.0s ease-in-out forwards', // Smoother weave
+        'weave-right': 'weave-right 1.0s ease-in-out forwards' // Smoother weave
 			},
       fontFamily: {
         'serif': ['Playfair Display', 'serif'],

@@ -1,41 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { setupRevealAnimations } from "@/lib/animation";
-
-interface Product {
-  id: string;
-  name: string;
-  images: string[];
-  description: string;
-}
-
-// These products will be replaced with actual data once images are provided
-const placeholderProducts: Product[] = [
-  {
-    id: "A",
-    name: "Bohemian Tote",
-    images: ["A1", "A2"],
-    description: "A spacious tote with intricate knotting patterns ideal for daily use.",
-  },
-  {
-    id: "B",
-    name: "Elegant Crossbody",
-    images: ["B1", "B2"],
-    description: "A compact crossbody design featuring refined macrame detailing.",
-  },
-  {
-    id: "C",
-    name: "Festival Backpack",
-    images: ["C1", "C2"],
-    description: "A medium-sized backpack with vibrant patterns perfect for adventures.",
-  },
-  {
-    id: "D",
-    name: "Evening Clutch",
-    images: ["D1", "D2"],
-    description: "A sophisticated clutch with delicate knotwork for special occasions.",
-  },
-];
+import { products, Product } from "@/data/products";
 
 export const Portfolio = () => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
@@ -70,7 +36,7 @@ export const Portfolio = () => {
       <h2 className="section-title reveal-animation" data-animation="weave-left">Our Collection</h2>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-12">
-        {placeholderProducts.map((product, index) => (
+        {products.map((product, index) => (
           <div 
             key={product.id}
             className="macrame-card reveal-animation cursor-pointer"
@@ -78,10 +44,12 @@ export const Portfolio = () => {
             data-delay={`${index * 100}`}
             onClick={() => openProduct(product)}
           >
-            <div className="relative aspect-square bg-decoroots-cream dark:bg-decoroots-charcoal/40 flex items-center justify-center">
-              <p className="text-muted-foreground">
-                {product.images[0]} Placeholder
-              </p>
+            <div className="relative aspect-square bg-decoroots-cream dark:bg-decoroots-charcoal/40 overflow-hidden">
+              <img 
+                src={product.images[0]} 
+                alt={product.name}
+                className="w-full h-full object-cover object-center"
+              />
             </div>
             <div className="p-4">
               <h3 className="text-xl font-serif">{product.name}</h3>
@@ -109,14 +77,17 @@ export const Portfolio = () => {
             </div>
             
             <div 
-              className="relative aspect-square bg-decoroots-cream dark:bg-decoroots-charcoal/40 flex items-center justify-center rounded-md mb-4 cursor-pointer"
+              className="relative aspect-square bg-decoroots-cream dark:bg-decoroots-charcoal/40 flex items-center justify-center rounded-md mb-4 cursor-pointer overflow-hidden"
               onClick={nextImage}
             >
-              <p className="text-muted-foreground">
-                {selectedProduct.images[currentImageIndex]} Placeholder
-                <br />
-                (Click to view next image)
-              </p>
+              <img 
+                src={selectedProduct.images[currentImageIndex]} 
+                alt={`${selectedProduct.name} - Image ${currentImageIndex + 1}`}
+                className="w-full h-full object-contain"
+              />
+              <div className="absolute bottom-2 right-2 bg-background/70 px-2 py-1 rounded text-xs">
+                Click to view next image
+              </div>
             </div>
             
             <div className="flex justify-between">

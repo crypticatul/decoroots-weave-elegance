@@ -29,7 +29,7 @@ const Index = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
+      <Header logo="/lovable-uploads/c04c2297-b92e-46b9-bbd0-8056a8104ef9.png" />
       <main className="flex-grow">
         <Hero />
         <Portfolio />

@@ -41,10 +41,11 @@ export const Hero = () => {
           
           <div className="relative h-80 md:h-96 lg:h-[32rem] reveal-animation" data-animation="scale-in">
             <div className="absolute inset-0 bg-decoroots-cream dark:bg-decoroots-charcoal/20 rounded-2xl overflow-hidden shadow-lg">
-              {/* This is a placeholder for the hero image - will be replaced with actual product image */}
-              <div className="h-full w-full bg-gradient-to-br from-decoroots-beige to-decoroots-cream dark:from-decoroots-charcoal dark:to-background flex items-center justify-center">
-                <p className="text-xl font-serif text-muted-foreground">Product Image Placeholder</p>
-              </div>
+              <img 
+                src="/lovable-uploads/8a8bce5b-eaa7-47bb-83de-6dc70363f9e6.png" 
+                alt="Featured Macrame Bag" 
+                className="h-full w-full object-contain p-6"
+              />
             </div>
           </div>
         </div>

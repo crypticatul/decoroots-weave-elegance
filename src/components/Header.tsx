@@ -1,92 +1,94 @@
 
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
-import ThemeToggle from "./ThemeToggle";
+import { Moon, Sun, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
-interface NavLink {
-  name: string;
-  href: string;
+interface HeaderProps {
+  logo?: string;
 }
 
-const navLinks: NavLink[] = [
-  { name: "Home", href: "#home" },
-  { name: "Portfolio", href: "#portfolio" },
-  { name: "Our Story", href: "#story" },
-  { name: "Contact", href: "#contact" },
-];
-
-export const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+export const Header = ({ logo }: HeaderProps) => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 10);
     };
     
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  
+
   return (
-    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-      scrolled 
-        ? "bg-background/90 backdrop-blur-md shadow-sm py-2" 
-        : "bg-transparent py-4"
-    }`}>
-      <div className="container mx-auto px-4 flex justify-between items-center">
-        <a href="#home" className="z-50 flex items-center">
-          <span className="text-xl md:text-2xl font-serif font-medium">
-            Decoroots
-          </span>
-        </a>
-        
-        <div className="hidden md:flex items-center space-x-6">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="text-foreground hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
+    <header 
+      className={`sticky top-0 w-full z-40 transition-all duration-300 ${
+        isScrolled ? "bg-background/80 backdrop-blur-md shadow-sm" : "bg-transparent"
+      }`}
+    >
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16 md:h-20">
+          {/* Logo */}
+          <a href="#" className="flex items-center space-x-2">
+            {logo ? (
+              <div className="h-12 w-12 overflow-hidden rounded-full border border-decoroots-brown">
+                <img src="/lovable-uploads/de8ec7d7-4da2-4fb0-9051-d619c1364a4b.png" alt="Decoroots Logo" className="h-full w-full object-cover" />
+              </div>
+            ) : (
+              <div className="h-8 w-8 bg-primary rounded-full"></div>
+            )}
+            <span className="text-xl md:text-2xl font-serif">Decoroots</span>
+          </a>
+          
+          {/* Navigation - Desktop */}
+          <nav className="hidden md:flex space-x-8">
+            <a href="#home" className="nav-link">Home</a>
+            <a href="#portfolio" className="nav-link">Collection</a>
+            <a href="#story" className="nav-link">Our Story</a>
+            <a href="#contact" className="nav-link">Contact</a>
+          </nav>
+          
+          {/* Actions */}
+          <div className="flex items-center">
+            <ThemeToggle />
+            
+            {/* Mobile Menu Button */}
+            <Button 
+              variant="ghost" 
+              size="sm"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="ml-2 md:hidden"
             >
-              {link.name}
-            </a>
-          ))}
-          <ThemeToggle />
-        </div>
-        
-        <div className="flex md:hidden items-center space-x-2">
-          <ThemeToggle />
-          <Button variant="ghost" size="icon" onClick={toggleMenu} className="md:hidden">
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </Button>
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </Button>
+          </div>
         </div>
       </div>
       
       {/* Mobile Menu */}
-      <div
-        className={`fixed inset-0 bg-background/95 z-40 flex flex-col justify-center items-center transition-transform duration-300 ease-in-out ${
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
-        } md:hidden`}
+      <div 
+        className={`md:hidden fixed inset-0 z-50 bg-background/95 backdrop-blur-md transition-transform duration-300 ${
+          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
       >
-        <nav className="flex flex-col items-center space-y-6 text-xl">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="text-foreground hover:text-primary transition-colors"
-              onClick={toggleMenu}
+        <div className="container mx-auto px-4 py-6">
+          <div className="flex justify-end mb-8">
+            <Button 
+              variant="ghost" 
+              onClick={() => setMobileMenuOpen(false)}
             >
-              {link.name}
-            </a>
-          ))}
-        </nav>
+              <X size={24} />
+            </Button>
+          </div>
+          
+          <nav className="flex flex-col items-center space-y-6 text-lg">
+            <a href="#home" onClick={() => setMobileMenuOpen(false)} className="nav-link">Home</a>
+            <a href="#portfolio" onClick={() => setMobileMenuOpen(false)} className="nav-link">Collection</a>
+            <a href="#story" onClick={() => setMobileMenuOpen(false)} className="nav-link">Our Story</a>
+            <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="nav-link">Contact</a>
+          </nav>
+        </div>
       </div>
     </header>
   );

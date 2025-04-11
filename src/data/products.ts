@@ -1,3 +1,4 @@
+import * as XLSX from 'xlsx';
 
 export interface Product {
   id: string;
@@ -70,3 +71,24 @@ export const products: Product[] = [
     description: "Boho Macrame woven cotton handbag\nSize - 20D x 20W x 65H CM",
   },
 ];
+
+export function loadProductsFromExcel(excelUrl: string): void {
+  fetch(excelUrl)
+    .then(response => response.arrayBuffer())
+    .then(buffer => {
+      const workbook = XLSX.read(buffer, { type: 'array' });
+      const sheetName = workbook.SheetNames[0];
+      const worksheet = workbook.Sheets[sheetName];
+      const data: Product[] = XLSX.utils.sheet_to_json(worksheet);
+
+      data.forEach(product => {
+        products.push({
+          id: product.id,
+          name: product.name,
+images: (product.images as unknown as string).split(','),
+          description: product.description
+        });
+      });
+    })
+    .catch(error => console.error('Error loading Excel file:', error));
+}

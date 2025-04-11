@@ -4,7 +4,8 @@ import { useEffect } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Portfolio from "@/components/Portfolio";
-import Story from "@/components/Story";
+import AboutUs from "@/components/AboutUs"; // Added AboutUs import
+import BulkOrders from "@/components/BulkOrders"; // Added BulkOrders import
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { setupRevealAnimations } from "@/lib/animation";
@@ -34,7 +35,8 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <Portfolio />
-        <Story />
+        <AboutUs /> {/* Added AboutUs component */}
+        <BulkOrders /> {/* Added BulkOrders component */}
         <Contact />
       </main>
       <Footer />

@@ -1,5 +1,6 @@
 
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
 	darkMode: ["class"],
@@ -60,6 +61,8 @@ export default {
           sage: '#7D9C76',
           cream: '#F9F6F0',
           charcoal: '#333333',
+          yellow: '#FEEEBD', // Added new yellow color
+          'light-grey': '#E4E3E1', // Added new light grey color
         }
 			},
 			borderRadius: {
@@ -115,5 +118,5 @@ export default {
       }
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [tailwindcssAnimate],
 } satisfies Config;

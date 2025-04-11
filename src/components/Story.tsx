@@ -9,11 +9,12 @@ export const Story = () => {
   }, []);
   
   return (
-    <section id="story" className="section-container bg-secondary/50 dark:bg-secondary/10">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="section-title reveal-animation" data-animation="weave-left">Our Story</h2>
+    <section id="story" className="bg-decoroots-yellow section-container"> {/* Changed background and padding & added section-container */}
+      <div className="max-w-4xl mx-auto"> {/* Keep max-w for content width control */}
+      
+      <h2 className="section-title reveal-animation" data-animation="weave-left">Our Story</h2> {/* Updated title style */}
         
-        <div className="grid md:grid-cols-5 gap-8 mt-12">
+        <div className="grid md:grid-cols-5 gap-8 mt-12 items-center"> {/* Added items-center */}
           <div className="md:col-span-2">
             <div className="h-full w-full rounded-2xl overflow-hidden shadow-md reveal-animation" data-animation="weave-left">
               <img 
@@ -24,7 +25,7 @@ export const Story = () => {
             </div>
           </div>
           
-          <div className="md:col-span-3 space-y-6">
+          <div className="md:col-span-3 space-y-6 font-sans text-lg text-decoroots-charcoal"> {/* Updated text style for paragraphs */}
             <p className="reveal-animation" data-animation="weave-right" data-delay="100">
               Welcome to Decoroots. Where timeless craftsmanship meets modern style in the form of our stunning macrame 
               bags. As a new and vibrant startup, we are passionate about creating eco-friendly, artisanal accessories that add a 

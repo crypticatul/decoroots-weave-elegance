@@ -32,12 +32,12 @@ export const Portfolio = () => {
   };
   
   return (
-    <section id="portfolio" className="section-container">
+    <section id="portfolio" className="bg-decoroots-light-grey section-container"> {/* Changed background and padding & added section-container */}
       <h2 className="section-title reveal-animation" data-animation="weave-left">Our Collection</h2>
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-12"> {/* Kept mt-12 for spacing */}
         {products.map((product, index) => (
-          <div 
+          <div
             key={product.id}
             className="macrame-card reveal-animation cursor-pointer"
             data-animation={index % 2 === 0 ? "weave-left" : "weave-right"}
@@ -51,9 +51,9 @@ export const Portfolio = () => {
                 className="w-full h-full object-cover object-center"
               />
             </div>
-            <div className="p-4">
-              <h3 className="text-xl font-serif">{product.name}</h3>
-              <p className="text-sm text-muted-foreground mt-1">{product.description}</p>
+            <div className="p-4 bg-white dark:bg-decoroots-charcoal/50"> {/* Added background to card text area */}
+              <h3 className="text-xl font-serif text-decoroots-charcoal">{product.name}</h3> {/* Updated card title style */}
+              <p className="text-sm font-sans text-decoroots-charcoal/80 mt-1">{product.description}</p> {/* Updated card description style */}
             </div>
           </div>
         ))}
@@ -67,10 +67,10 @@ export const Portfolio = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-2xl font-serif">{selectedProduct.name}</h3>
+              <h3 className="text-2xl font-serif text-decoroots-charcoal">{selectedProduct.name}</h3> {/* Updated modal title style */}
               <button 
                 onClick={closeProduct}
-                className="p-1 rounded-full hover:bg-muted transition-colors"
+                className="p-1 rounded-full text-decoroots-charcoal hover:bg-decoroots-light-grey/50 transition-colors" /* Updated close button style */
               >
                 ✕
               </button>
@@ -90,16 +90,16 @@ export const Portfolio = () => {
               </div>
             </div>
             
-            <div className="flex justify-between">
+            <div className="flex justify-between items-center mt-4"> {/* Added alignment and margin */}
               <div>
-                <p className="text-muted-foreground">{selectedProduct.description}</p>
+                <p className="font-sans text-decoroots-charcoal/80">{selectedProduct.description}</p> {/* Updated modal description style */}
               </div>
               <div className="flex space-x-2">
                 {selectedProduct.images.map((_, i) => (
                   <div 
                     key={i}
                     className={`w-2 h-2 rounded-full ${
-                      i === currentImageIndex ? "bg-primary" : "bg-muted"
+                      i === currentImageIndex ? "bg-decoroots-brown" : "bg-decoroots-light-grey" /* Updated indicator colors */
                     }`}
                   />
                 ))}

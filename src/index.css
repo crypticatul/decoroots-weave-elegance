@@ -20,14 +20,17 @@
     --primary: 28 33% 51%;
     --primary-foreground: 30 33% 98%;
 
-    --secondary: 60 9% 95%;
-    --secondary-foreground: 24 9% 20%;
+    /* Updated secondary to decoroots-light-grey */
+    --secondary: 60 4% 81%; 
+    --secondary-foreground: 20 10% 20%; /* Dark foreground for contrast */
 
-    --muted: 60 9% 95%;
-    --muted-foreground: 20 5% 45%;
+    /* Updated muted to match secondary */
+    --muted: 60 4% 81%; 
+    --muted-foreground: 20 10% 30%; /* Slightly lighter dark foreground */
 
-    --accent: 142 15% 54%;
-    --accent-foreground: 30 33% 98%;
+    /* Updated accent to decoroots-yellow */
+    --accent: 46 93% 87%; 
+    --accent-foreground: 20 10% 20%; /* Dark foreground for contrast */
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 30 33% 98%;
@@ -52,14 +55,17 @@
     --primary: 28 27% 55%;
     --primary-foreground: 20 10% 10%;
 
-    --secondary: 20 10% 20%;
-    --secondary-foreground: 30 10% 90%;
+    /* Updated dark secondary (darker grey) */
+    --secondary: 60 4% 20%; 
+    --secondary-foreground: 30 10% 90%; /* Light foreground */
 
-    --muted: 20 10% 20%;
-    --muted-foreground: 30 10% 70%;
+    /* Updated dark muted to match dark secondary */
+    --muted: 60 4% 20%; 
+    --muted-foreground: 30 10% 70%; /* Slightly dimmer light foreground */
 
-    --accent: 142 15% 40%;
-    --accent-foreground: 30 10% 90%;
+    /* Updated dark accent (darker yellow) */
+    --accent: 46 70% 40%; 
+    --accent-foreground: 30 10% 90%; /* Light foreground */
 
     --destructive: 0 62% 50%;
     --destructive-foreground: 30 10% 90%;
@@ -87,13 +93,21 @@
     @apply container mx-auto px-4 py-16 md:py-24;
   }
   
-  .section-title {
-    @apply text-3xl md:text-4xl font-serif font-medium mb-8 relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-primary after:scale-x-30 after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-500;
+.section-title {
+    @apply text-3xl md:text-4xl font-serif font-medium mb-8 relative inline-block text-left after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-primary after:scale-x-30 after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-500;
   }
   
   .macrame-card {
     @apply overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300;
-  }
+}
+
+.button {
+  @apply bg-decoroots-yellow text-decoroots-charcoal font-medium py-2 px-4 rounded-lg hover:bg-decoroots-brown transition-colors duration-300;
+}
+
+.button-dark {
+  @apply bg-decoroots-light-grey text-decoroots-charcoal font-medium py-2 px-4 rounded-lg hover:bg-decoroots-brown transition-colors duration-300;
+}
   
   .reveal-animation {
     @apply opacity-0;

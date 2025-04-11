@@ -33,15 +33,18 @@ export const Header = ({ logo }: HeaderProps) => {
             <div className="h-12 w-12 overflow-hidden rounded-full border border-decoroots-brown">
               <img src={logo} alt="Decoroots Logo" className="h-full w-full object-cover" />
             </div>
-            <span className="text-xl md:text-2xl font-serif">Decoroots</span>
+            {/* Updated logo text style */}
+            <span className="text-xl md:text-2xl font-serif text-decoroots-charcoal">Decoroots</span>
           </a>
 
           {/* Navigation - Desktop */}
-          <nav className="hidden md:flex space-x-8">
-            <a href="#home" className="nav-link">Home</a>
-            <a href="#portfolio" className="nav-link">Collection</a>
-            <a href="#story" className="nav-link">Our Story</a>
-            <a href="#contact" className="nav-link">Contact</a>
+          {/* Replaced nav-link with Tailwind classes */}
+          <nav className="hidden md:flex space-x-8 font-sans">
+            <a href="#home" className="text-decoroots-charcoal hover:text-decoroots-brown transition-colors">Home</a>
+            <a href="#portfolio" className="text-decoroots-charcoal hover:text-decoroots-brown transition-colors">Collection</a>
+            <a href="#about-us" className="text-decoroots-charcoal hover:text-decoroots-brown transition-colors">About Us</a>
+            <a href="#bulk-orders" className="text-decoroots-charcoal hover:text-decoroots-brown transition-colors">Bulk Orders</a>
+            <a href="#contact" className="text-decoroots-charcoal hover:text-decoroots-brown transition-colors">Contact</a>
           </nav>
 
           {/* Actions */}
@@ -69,20 +72,24 @@ export const Header = ({ logo }: HeaderProps) => {
       >
         <div className="container mx-auto px-4 py-6">
           <div className="flex justify-end mb-8">
+            {/* Updated mobile close button style */}
             <Button
               variant="ghost"
               onClick={() => setMobileMenuOpen(false)}
+              className="text-decoroots-charcoal hover:bg-decoroots-light-grey/50"
             >
               <X size={24} />
             </Button>
           </div>
 
           {/* Added background, padding, and rounded corners to the nav element */}
-          <nav className="flex flex-col items-center space-y-6 text-lg bg-background/80 p-6 rounded-lg">
-            <a href="#home" onClick={() => setMobileMenuOpen(false)} className="nav-link">Home</a>
-            <a href="#portfolio" onClick={() => setMobileMenuOpen(false)} className="nav-link">Collection</a>
-            <a href="#story" onClick={() => setMobileMenuOpen(false)} className="nav-link">Our Story</a>
-            <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="nav-link">Contact</a>
+          {/* Replaced nav-link with Tailwind classes */}
+          <nav className="flex flex-col items-center space-y-6 text-lg bg-background/80 p-6 rounded-lg font-sans">
+            <a href="#home" onClick={() => setMobileMenuOpen(false)} className="text-decoroots-charcoal hover:text-decoroots-brown transition-colors">Home</a>
+            <a href="#portfolio" onClick={() => setMobileMenuOpen(false)} className="text-decoroots-charcoal hover:text-decoroots-brown transition-colors">Collection</a>
+            <a href="#about-us" onClick={() => setMobileMenuOpen(false)} className="text-decoroots-charcoal hover:text-decoroots-brown transition-colors">About Us</a>
+            <a href="#bulk-orders" onClick={() => setMobileMenuOpen(false)} className="text-decoroots-charcoal hover:text-decoroots-brown transition-colors">Bulk Orders</a>
+            <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="text-decoroots-charcoal hover:text-decoroots-brown transition-colors">Contact</a>
           </nav>
         </div>
       </div>
